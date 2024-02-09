@@ -17,11 +17,11 @@ BLENDS_INFO = {}
 returns = {}
 return_percentiles = {}
 
-with open('files/config.yml', 'r') as file:
+with open('../files/config.yml', 'r') as file:
     config = yaml.load(file, Loader=yaml.FullLoader)
     BLENDS_INFO = config['blends']
 
-with open('files/annual_sim_data.json', 'r') as file:
+with open('../results/annual_sim_data.json', 'r') as file:
     sim_data = json.load(file)
     ETF_NAMES = [*sim_data.keys()]
     ALL_NAMES = ETF_NAMES + [*BLENDS_INFO.keys()]
@@ -83,7 +83,7 @@ end_time = time.time()
 duration_compute = round(end_time - start_time, 2)
 
 fields = ['etf', 'year_value', 'year_name', 'percentile', 'return']
-with open('return_percentiles.csv', 'w') as f:
+with open('../results/return_percentiles.csv', 'w') as f:
     w = csv.writer(f)
     w.writerow(fields)
     for name in return_percentiles:

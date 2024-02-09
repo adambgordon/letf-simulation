@@ -4,7 +4,7 @@ import numpy as np
 import time
 import pprint as pp
 
-with open('files/config.yml', 'r') as file:
+with open('../files/config.yml', 'r') as file:
     config = yaml.load(file, Loader=yaml.FullLoader)
 
 def ANNUAL_FEE_TO_DAILY_FEE_MULTIPLIER(fee):
@@ -67,5 +67,5 @@ end_time = time.time()
 duration = round(end_time - start_time, 2)
 print(duration, 's to compute')
 
-with open('files/annual_sim_data.json', 'w') as file:
+with open('../results/annual_sim_data.json', 'w') as file:
     json.dump(results, file)
