@@ -3,6 +3,7 @@ import json
 import numpy as np
 import time
 import pprint as pp
+import sys
 
 with open('../files/config.yml', 'r') as file:
     config = yaml.load(file, Loader=yaml.FullLoader)
@@ -51,21 +52,26 @@ def simulate_year():
 build_annual_cum_returns()
 
 def run(years):
-    counter = 0
-    for _ in range(years):
-        # counter += 1
-        # if counter > 10:
-            # exit()
+    dot_bucket = int(years/76)
+    start_time = time.time()
+
+    print()
+    for y in range(years):
         simulate_year()
         for etf in ETF_NAMES:
             results[etf].append(annual_cum_returns[etf]['return'])
-            # pp.pprint(results)
+        
+        dot_count = y/dot_bucket
+        print("{:.0%}".format(y/years) + "."*int(dot_count))
+        print("Simulating {:,} years".format(y+1))
+        print("{:.2f} seconds".format(time.time() - start_time))
+        sys.stdout.write("\033[F"*3)  # \033[F resets 'cursor' to begging of line (x3)
 
-start_time = time.time()
+    print("100%"+"."*76+"\033[K")  # \033[K clears remainder of line
+    print("Simulated {:,} years\033[K".format(y+1))
+    print("{:.2f} seconds\033[K".format(time.time() - start_time))
+
 run(YEARS_TO_SIMULATE)
-end_time = time.time()
-duration = round(end_time - start_time, 2)
-print(duration, 's to compute')
 
 with open('../results/annual_sim_data.json', 'w') as file:
     json.dump(results, file)

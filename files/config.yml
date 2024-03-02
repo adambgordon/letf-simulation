@@ -2,7 +2,7 @@ annual_return: 0.08
 annual_standard_deviation: 0.12
 annual_expense_ratio: 0.0095
 annual_fed_funds_rate: 0.03
-years_to_simulate: 1000
+years_to_simulate: 100000
 etfs: {
   1x: {multiple: 1},
   2x: {multiple: 2},
