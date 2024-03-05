@@ -4,8 +4,11 @@ import numpy as np
 import time
 import pprint as pp
 import sys
+from helper import *
 
-with open('../files/config.yml', 'r') as file:
+PATH = getAbsPath()
+
+with open(PATH+'/files/config.yml', 'r') as file:
     config = yaml.load(file, Loader=yaml.FullLoader)
 
 def ANNUAL_FEE_TO_DAILY_FEE_MULTIPLIER(fee):
@@ -73,5 +76,5 @@ def run(years):
 
 run(YEARS_TO_SIMULATE)
 
-with open('../results/annual_sim_data.json', 'w') as file:
+with open(PATH+'/results/annual_sim_data.json', 'w') as file:
     json.dump(results, file)

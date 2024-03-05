@@ -6,6 +6,9 @@ import pprint as pp
 import csv
 import threading
 import sys
+from helper import *
+
+PATH = getAbsPath()
 
 class ElapsedTimeThread(threading.Thread):
     """"Stoppable thread that prints the time elapsed"""
@@ -61,11 +64,11 @@ def build():
     returns = {}
     return_percentiles = {}
 
-    with open('../files/config.yml', 'r') as file:
+    with open(PATH+'/files/config.yml', 'r') as file:
         config = yaml.load(file, Loader=yaml.FullLoader)
         BLENDS_INFO = config['blends']
 
-    with open('../results/annual_sim_data.json', 'r') as file:
+    with open(PATH+'/results/annual_sim_data.json', 'r') as file:
         sim_data = json.load(file)
         ETF_NAMES = [*sim_data.keys()]
         ALL_NAMES = ETF_NAMES + [*BLENDS_INFO.keys()]
@@ -124,7 +127,7 @@ def build():
     build_final_results()
 
     fields = ['etf', 'year_value', 'year_name', 'percentile', 'return']
-    with open('../results/return_percentiles.csv', 'w') as f:
+    with open(PATH+'/results/return_percentiles.csv', 'w') as f:
         w = csv.writer(f)
         w.writerow(fields)
         for name in return_percentiles:
