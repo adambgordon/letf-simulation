@@ -1,55 +1,13 @@
 import json
 import yaml
 import numpy as np
-import time
 import pprint as pp
 import csv
-import threading
-import sys
 from helper import *
+from timer_thread import *
 
 PATH = getAbsPath()
 
-class ElapsedTimeThread(threading.Thread):
-    """"Stoppable thread that prints the time elapsed"""
-    def __init__(self):
-        super(ElapsedTimeThread, self).__init__()
-        self._stop_event = threading.Event()
-
-    def stop(self):
-        self._stop_event.set()
-
-    def stopped(self):
-        return self._stop_event.is_set()
-
-    def run(self):
-
-        dots = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
-        index = 0
-        last_half_second = 0
-
-        print()
-        thread_start = time.time()
-
-        while not self.stopped():
-            duration = time.time()-thread_start
-
-            current_half_second = int(duration/0.1)
-            if (current_half_second != last_half_second):
-                last_half_second = current_half_second
-                index += 1
-                if (index == len(dots)):
-                    index = 0
-            
-            print("Aggregating data... {}".format(dots[index]))
-            print("{:.2f} seconds\n".format(duration))
-            sys.stdout.write("\033[F"*3)
-
-            # Include a delay here so the thread doesn't uselessly thrash the CPU
-            time.sleep(0.01)
-
-        print("Aggregation complete\033[K")
-        print("{:.2f} seconds\033[K\n".format(time.time()-thread_start))
 
 def build():
     FORMAT_YR = ','
@@ -138,7 +96,6 @@ def build():
 
 
 if __name__ == "__main__":
-    start = time.time()
     thread = ElapsedTimeThread()
     thread.start()
 
