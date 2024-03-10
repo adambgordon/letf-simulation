@@ -1,5 +1,7 @@
 from pathlib import Path
 
 def getAbsPath():
-    p = str(Path(__file__).parent.parent)
+    """Get the absolute path."""
+    p = str(Path(__file__))
     return p[:p.find("/letf-simulation")]+"/letf-simulation"
+print(getAbsPath.__doc__)
