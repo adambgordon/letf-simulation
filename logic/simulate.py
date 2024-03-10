@@ -55,7 +55,7 @@ def simulate_year():
 build_annual_cum_returns()
 
 def run(years):
-    dot_bucket = int(years/76)
+    dot_bucket = int(years/80)
     start_time = time.time()
 
     print()
@@ -64,8 +64,10 @@ def run(years):
         for etf in ETF_NAMES:
             results[etf].append(annual_cum_returns[etf]['return'])
         
-        dot_count = y/dot_bucket
-        print(f"{y/years:.0%}" + "."*int(dot_count))
+        pct_complete = str(int((y/years)*100)) + "%"
+        dot_count = y/dot_bucket - len(pct_complete)
+        
+        print(f"{pct_complete}" + "."*int(dot_count))
         print(f"Simulating {y+1:,} years")
         print(f"{time.time() - start_time:.2f} seconds")
         sys.stdout.write("\033[F"*3)  # \033[F resets 'cursor' to begging of line (x3)
