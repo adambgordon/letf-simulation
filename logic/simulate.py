@@ -65,14 +65,14 @@ def run(years):
             results[etf].append(annual_cum_returns[etf]['return'])
         
         dot_count = y/dot_bucket
-        print("{:.0%}".format(y/years) + "."*int(dot_count))
-        print("Simulating {:,} years".format(y+1))
-        print("{:.2f} seconds".format(time.time() - start_time))
+        print(f"{y/years:.0%}" + "."*int(dot_count))
+        print(f"Simulating {y+1:,} years")
+        print(f"{time.time() - start_time:.2f} seconds")
         sys.stdout.write("\033[F"*3)  # \033[F resets 'cursor' to begging of line (x3)
 
     print("100%"+"."*76+"\033[K")  # \033[K clears remainder of line
-    print("Simulated {:,} years\033[K".format(y+1))
-    print("{:.2f} seconds\033[K".format(time.time() - start_time))
+    print(f"Simulated {y+1:,} years\033[K")
+    print(f"{time.time() - start_time:.2f} seconds\033[K")
 
 run(YEARS_TO_SIMULATE)
 

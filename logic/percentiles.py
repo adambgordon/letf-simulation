@@ -4,14 +4,12 @@ import numpy as np
 import pprint as pp
 import csv
 from helper import *
-from timer_thread import *
+from thread_timer import *
 
 PATH = getAbsPath()
 
 
 def build():
-    FORMAT_YR = ','
-    FORMAT_PCT = ',.4%'
 
     YEAR_BUCKETS = [1, 3, 5, 10, 15, 20, 30]
     PERCENTILES = [i for i in range(0, 101)]
@@ -96,10 +94,10 @@ def build():
 
 
 if __name__ == "__main__":
-    thread = ElapsedTimeThread()
-    thread.start()
+    elapsed_thread = ElapsedTimeThread()
+    elapsed_thread.start()
 
     build()   
 
-    thread.stop()
-    thread.join()
+    elapsed_thread.stop()
+    elapsed_thread.join()
