@@ -1,4 +1,4 @@
-from helper import *
+from helper import getAbsPath
 
 PATH = getAbsPath()
 
