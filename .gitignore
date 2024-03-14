@@ -1,4 +1,5 @@
 *.xlsx
-annual_sim_data.json
+*.json
+*.csv
 .DS_Store
 .vscode/
