@@ -1,7 +1,7 @@
-annual_index_return: 0.08
-annual_index_standard_deviation: 0.12
-annual_fed_funds_rate: 0.03
-years_to_simulate: 100000
+index_annual_return: 0.08
+index_annual_standard_deviation: 0.12
+fed_funds_annual_rate: 0.03
+years_to_simulate: 10000
 etfs: {
   # 1x represents the underlying index
   1x: {

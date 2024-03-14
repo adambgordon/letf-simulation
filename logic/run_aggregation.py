@@ -95,22 +95,22 @@ def build_probabilities(data):
     # Comparing all etfs and blends against 1x
     for etf in data.ALL_NAMES:
         for year in data.YEAR_BUCKETS:
-            found_zero_return = False
+            found_positive_return = False
             found_beat_index = False
             # Default case for 1x comparing to itself
             if etf == '1x':
                 found_beat_index = True
-                data.return_probabilities[etf][year]['beat_index'] = None
+                data.return_probabilities[etf][year]['probability_beat_index'] = 0
             for pct in data.PERCENTILES:
                 ret_1x = data.return_percentiles['1x'][year][pct]
                 ret_etf = data.return_percentiles[etf][year][pct]
-                if not found_zero_return and ret_etf > 0:
-                    found_zero_return = True
-                    data.return_probabilities[etf][year]['zero_return'] = round(pct/100, 3)
+                if not found_positive_return and ret_etf > 0:
+                    found_positive_return = True
+                    data.return_probabilities[etf][year]['probability_positive_return'] = round(1 - pct/100, 3)
                 if not found_beat_index and ret_etf > ret_1x:
                     found_beat_index = True
-                    data.return_probabilities[etf][year]['beat_index'] = round(pct/100, 3)
-                if found_zero_return and found_beat_index:
+                    data.return_probabilities[etf][year]['probability_beat_index'] = round(1 - pct/100, 3)
+                if found_positive_return and found_beat_index:
                     break
 
 def build_final_results(data):
@@ -137,15 +137,15 @@ def write_results_to_csv(data):
 
     if not data.return_probabilities:
         return
-    fields = ['etf', 'year_value', 'year_name', 'zero_return', 'beat_index']
+    fields = ['etf', 'year_value', 'year_name', 'probability_positive_return', 'probability_beat_index']
     with open(Path(data.PATH, 'results', 'return_probabilities.csv'), 'w') as f:
         w = csv.writer(f)
         w.writerow(fields)
         for name in data.return_probabilities:
             for year in data.YEAR_BUCKETS:
-                prob_zero_return = data.return_probabilities[name][year]['zero_return']
-                prob_beat_index = data.return_probabilities[name][year]['beat_index']
-                w.writerow([name, year, str(year)+'yr', prob_zero_return, prob_beat_index])
+                prob_positive_return = data.return_probabilities[name][year]['probability_positive_return']
+                prob_beat_index = data.return_probabilities[name][year]['probability_beat_index']
+                w.writerow([name, year, str(year)+'yr', prob_positive_return, prob_beat_index])
 
 def main():
     """Main function."""

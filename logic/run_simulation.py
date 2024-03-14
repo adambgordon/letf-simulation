@@ -18,10 +18,10 @@ class Data:
             self.CONFIG = yaml.safe_load(file)
         # Define constants
         self.NUM_TRADING_DAYS = 252
-        self.DAILY_RETURN = (1 + self.CONFIG['annual_index_return'])**(1/self.NUM_TRADING_DAYS) - 1
-        self.DAILY_STANDARD_DEVIATION = self.CONFIG['annual_index_standard_deviation'] / (self.NUM_TRADING_DAYS**0.5)
+        self.DAILY_RETURN = (1 + self.CONFIG['index_annual_return'])**(1/self.NUM_TRADING_DAYS) - 1
+        self.DAILY_STANDARD_DEVIATION = self.CONFIG['index_annual_standard_deviation'] / (self.NUM_TRADING_DAYS**0.5)
         # self.DAILY_EXPENSE_RATIO_MULTIPLIER = self.annual_fee_to_daily_fee_multiplier(fee=self.CONFIG['annual_expense_ratio'])
-        self.ANNUAL_FED_FUNDS_RATE = self.CONFIG['annual_fed_funds_rate']
+        self.fed_funds_annual_rate = self.CONFIG['fed_funds_annual_rate']
         self.YEARS_TO_SIMULATE = self.CONFIG['years_to_simulate']
         self.ETF_NAMES = list(self.CONFIG['etfs'].keys())
         self.ETF_INFO = self.CONFIG['etfs'].copy()
@@ -42,7 +42,7 @@ class Data:
 
     def daily_fed_funds_rate_multiplier(self, leverage):
         """Convert annual fed funds rate to daily multiplier."""
-        return self.annual_fee_to_daily_fee_multiplier(self.ANNUAL_FED_FUNDS_RATE*leverage)
+        return self.annual_fee_to_daily_fee_multiplier(self.fed_funds_annual_rate*leverage)
 
 def simulate_year(data):
     """Simulate a year for each ETF."""

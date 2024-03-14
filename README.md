@@ -47,7 +47,7 @@ The `config.yml` file contains the following parameters:
 - `annual_return`: The expected annual return.
 - `annual_standard_deviation`: The expected annual standard deviation.
 - `annual_expense_ratio`: The annual expense ratio.
-- `annual_fed_funds_rate`: The annual federal funds rate.
+- `fed_funds_annual_rate`: The annual federal funds rate.
 - `years_to_simulate`: The number of years to simulate.
 - `etfs`: A dictionary where the keys are the names of the ETFs and the values are dictionaries containing the `multiple` for each ETF.
 - `blends`: A dictionary where the keys are the names of the blends and the values are dictionaries containing the proportion of each ETF in the blend.
@@ -58,7 +58,7 @@ Here is an example configuration:
 annual_return: 0.08
 annual_standard_deviation: 0.12
 annual_expense_ratio: 0.0095
-annual_fed_funds_rate: 0.03
+fed_funds_annual_rate: 0.03
 years_to_simulate: 10000
 etfs: {
   1x: {multiple: 1},
