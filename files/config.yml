@@ -1,7 +1,7 @@
-index_annual_return: 0.08
-index_annual_standard_deviation: 0.12
+index_annual_return: 0.1281
+index_annual_standard_deviation: 0.1721
 fed_funds_annual_rate: 0.03
-years_to_simulate: 10000
+years_to_simulate: 100000
 etfs: {
   # 1x represents the underlying index
   1x: {
@@ -10,11 +10,11 @@ etfs: {
   },
   2x: {
     multiple: 2,
-    annual_expense_ratio: 0.0095
+    annual_expense_ratio: 0.0091
   },
   3x: {
     multiple: 3,
-    annual_expense_ratio: 0.0095
+    annual_expense_ratio: 0.0092
   }
 }
 blends: {
