@@ -1,12 +1,21 @@
-annual_return: 0.08
-annual_standard_deviation: 0.12
-annual_expense_ratio: 0.0095
-annual_fed_funds_rate: 0.03
+index_annual_return: 0.1281
+index_annual_standard_deviation: 0.1721
+fed_funds_annual_rate: 0.03
 years_to_simulate: 100000
 etfs: {
-  1x: {multiple: 1},
-  2x: {multiple: 2},
-  3x: {multiple: 3}
+  # 1x represents the underlying index
+  1x: {
+    multiple: 1,
+    annual_expense_ratio: 0
+  },
+  2x: {
+    multiple: 2,
+    annual_expense_ratio: 0.0091
+  },
+  3x: {
+    multiple: 3,
+    annual_expense_ratio: 0.0092
+  }
 }
 blends: {
   '70_30': {
