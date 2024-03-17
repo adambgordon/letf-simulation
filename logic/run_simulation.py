@@ -3,6 +3,7 @@ import sys
 import time
 import numpy as np
 import yaml
+import os
 from pathlib import Path
 from helper import getAbsPath
 
@@ -90,6 +91,8 @@ def run_simulation(data):
 
 def write_results_to_json(data):
     """Write the results to a JSON file."""
+    if not os.path.exists(Path(data.PATH, 'results')):
+        os.makedirs(Path(data.PATH, 'results'))
     with open(Path(data.PATH, 'results', 'annual_sim_data.json'), 'w') as file:
         json.dump(data.results, file)
 

@@ -17,16 +17,16 @@ To use this simulation, clone the repository to your local machine.
 
 ## Usage
 
-To run the simulation and aggregation, execute the `run_both.py` script in the root directory of the project.
+To run the simulation and aggregation, execute the `run_both.py` script. It can be be run from directory of the project or the enclosing `logic` folder.
 
 ```bash
-python3 run_both.py
+python3 logic/run_both.py
 ```
 
 Optional: If you wish to run the simulation or aggregation individually, you can execute those scripts independently.
 ```bash
-python3 run_simulation.py
-python3 run_aggregation.py
+python3 logic/run_simulation.py
+python3 logic/run_aggregation.py
 ```
 
 ## Files
@@ -112,7 +112,7 @@ This script runs both the simulation and aggregation scripts. It first executes 
 ### 1. How do I run this?
 
 ```bash
-python3 run_both.py
+python3 logic/run_both.py
 ```
 See [Usage](#usage) and [`run_both.py`](#run_bothpy) for more information.
 
