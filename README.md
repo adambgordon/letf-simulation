@@ -146,7 +146,7 @@ You there are two files of results that are generated, `results_percentiles.csv`
 | 3x	| 5	| 5yr	| 58.3	| 1.812721397 |
 | ... | ... | ... | ... | ... |
 
-The **return** is zero-based value, so 0.5 is a +50% percent gain, 0.0 is a 0% return (meaning the value your investment is unchanged), and -0.5 is 50% loss.
+The returns of all of the years (or buckets of years) of the simulation are ranked for each etf to the the tenth of a percentile. The **percentile** value is in percentage form. For instance, 75.5 represents 75.5th percentile, and 50.0 represents the 50th percentile, which is the median. The **return** is a zero-based cumulative return. For instance, 0.5 is a +50% percent cumulative gain, 0.0 is a 0% return (meaning the value your investment is unchanged), and -0.5 is 50% cumulative loss.
 
 #### Here is an example of `results_probabilities.csv`:
 
@@ -158,7 +158,7 @@ The **return** is zero-based value, so 0.5 is a +50% percent gain, 0.0 is a 0% r
 | 3x | 5 | 5yr | 0.751 | 0.631 |
 | ... | ... | ... | ... | ... |
 
-The **probability** values are probability percentages, so 0.5 represents a 50% percent chance or coin-toss odds of occurrence.
+The **probability_positive_return** and **probability_beat_index** values are probability percentages. For instance, 0.5 represents a 50% chance, or coin-toss odds, of achieving the corresponding outcome, a value of 1 means that the outcome is guaranteed, and a value of 0 means that the outcome is impossible.
 
 ### 6. What are the *year* values?
 
