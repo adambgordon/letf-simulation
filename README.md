@@ -1,6 +1,6 @@
-# Leveraged ETF Simulation
+# Leveraged ETF Simulator
 
-The Leveraged ETF Simulation repository contains Python scripts for simulating and analyzing the performance of leveraged exchange traded funds (ETFs) against an underlying index over thousands or millions of years. The simulation generates annual returns for the underlying index and its leveraged ETF counterparts, and optional blends between ETFs, based on a given configuration. The simulation data is then aggregated to generate performance metrics and probabilities. The repository includes scripts for running the simulation and aggregation, either together or independently, and a configuration file for specifying the parameters of the simulation. The results of the simulation are written to a JSON file and the results of the performance analysis are written to two CSV files.
+The Leveraged ETF Simulator repository contains Python scripts for simulating and analyzing the performance of leveraged exchange traded funds (ETFs) against an underlying index over thousands or millions of years. The simulation generates annual returns for the underlying index and its leveraged ETF counterparts, and optional blends between ETFs, based on a given configuration. The simulation data is then aggregated to generate performance metrics and probabilities. The repository includes scripts for running the simulation and aggregation, either together or independently, and a configuration file for specifying the parameters of the simulation. The results of the simulation are written to a JSON file and the results of the performance analysis are written to two CSV files.
 
 ## Table of Contents
 
